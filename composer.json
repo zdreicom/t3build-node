@@ -1,0 +1,38 @@
+{
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://composer.z3.ag/"
+    },
+    {
+      "packagist.org": false
+    }
+  ],
+  "name": "z3/t3build-node",
+  "description": "This package adds node support to t3-build",
+  "license": ["MIT"],
+  "require": {
+    "php": ">=7.0.0",
+    "symfony/process": "*",
+    "z3/t3build": "^2.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Z3\\T3buildNode\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Z3\\T3buildNode\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "vendor-dir": ".Build/vendor",
+    "bin-dir": ".Build/bin"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}

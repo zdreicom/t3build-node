@@ -1,0 +1,13 @@
+.DS_Store
+.Build
+.idea
+.php_cs.cache
+.gitlab-ci.yml
+/tests
+/composer.lock
+/libraries/node/node-v6.10.3/bin/node
+/libraries/node/node-v6.10.3/bin/npm
+/libraries/node/node_modules
+/temporary
+
+!.gitkeep
