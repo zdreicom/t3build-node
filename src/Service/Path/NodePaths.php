@@ -81,7 +81,7 @@ class NodePaths
         }
 
         if ($setSymlink && !is_file(self::$npmExecutable)) {
-            $process = new Process('chmod +x node-darwin-x64 node-linux-x64 node-musl-x64', self::$nodeExecutableDirectory);
+            $process = new Process('chmod +x node-darwin-x64 node-linux-x64', self::$nodeExecutableDirectory);
             $process->mustRun();
             $createSymLink = 'ln -s ' . self::$nodeRootDirectory . '/' . $nodeExecutablesDirectory . '/lib/node_modules/npm/bin/npm-cli.js npm';
             $process = new Process($createSymLink, self::$nodeExecutableDirectory);
