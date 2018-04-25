@@ -33,7 +33,7 @@ class NodePaths
     /**
      * @var string
      */
-    private static $nodeVersion = '8.11.1';
+    private static $nodeVersion = '6.10.3';
 
     /**
      * @var string $nmExecutable
