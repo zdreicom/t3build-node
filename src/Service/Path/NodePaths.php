@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Z3\T3buildNode\Service\Path;
 
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
 use Z3\T3build\Service\Bootstrap;
 use Z3\T3build\Service\Config;
@@ -32,7 +33,7 @@ class NodePaths
     /**
      * @var string
      */
-    private static $nodeVersion = '6.10.3';
+    private static $nodeVersion = '8.11.1';
 
     /**
      * @var string $nmExecutable
@@ -126,7 +127,9 @@ class NodePaths
     private static function loadPackages(): string
     {
         $temp = Config::getPaths()->getT3BuildTemporaryDirectory();
-        $command = self::getNodeExecutable() . ' ' . self::getNpmExecutable() . ' install ' . self::getNodeRootDirectory();
+        $fileSystem = new Filesystem();
+        $fileSystem->copy(self::getNodeRootDirectory() . '/package.json', $temp . '/package.json');
+        $command = self::getNodeExecutable() . ' ' . self::getNpmExecutable() . ' install';
         $process = new Process($command, $temp, null, null, 600);
         $process->mustRun();
         return $process->getOutput();
