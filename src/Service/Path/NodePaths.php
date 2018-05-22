@@ -75,8 +75,6 @@ class NodePaths
 
         }
 
-        // HOTFIX use local node version
-
         $nodeLocal = Config::getProjectConfiguration()->getConfigurationString('node/local', 'false');
 
         if ($nodeLocal === 'true') {
