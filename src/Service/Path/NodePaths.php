@@ -77,9 +77,16 @@ class NodePaths
 
         // HOTFIX use local node version
 
-        self::$nodeExecutable = trim((new Process('which node'))->mustRun()->getOutput());
-        self::$npmExecutable = trim((new Process('which npm'))->mustRun()->getOutput());
-        $setSymlink = false;
+        $nodeLocal = Config::getProjectConfiguration()->getConfigurationString('node/local', 'false');
+
+        if ($nodeLocal === 'true') {
+
+            self::$nodeExecutable = trim((new Process('which node'))->mustRun()->getOutput());
+            self::$npmExecutable = trim((new Process('which npm'))->mustRun()->getOutput());
+            $setSymlink = false;
+        }
+
+        echo self::$nodeExecutable; die();
 
         if ($setSymlink && !file_exists(self::$nodeExecutable)) {
             $createSymLink = 'ln -s ' . $nodeExecutableSystemSpecific . ' node';
