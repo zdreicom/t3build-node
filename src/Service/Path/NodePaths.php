@@ -72,7 +72,14 @@ class NodePaths
                 break;
             default:
                 throw new \Exception('Unsupported operation system: ' . PHP_OS);
+
         }
+
+        // HOTFIX use local node version
+
+        self::$nodeExecutable = trim((new Process('which node'))->mustRun()->getOutput());
+        self::$npmExecutable = trim((new Process('which npm'))->mustRun()->getOutput());
+        $setSymlink = false;
 
         if ($setSymlink && !file_exists(self::$nodeExecutable)) {
             $createSymLink = 'ln -s ' . $nodeExecutableSystemSpecific . ' node';
