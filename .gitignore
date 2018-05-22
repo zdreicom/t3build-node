@@ -11,5 +11,6 @@
 /libraries/node/node-v8.11.1/bin/npm
 /libraries/node/node_modules
 /temporary
+/configuration
 
 !.gitkeep
