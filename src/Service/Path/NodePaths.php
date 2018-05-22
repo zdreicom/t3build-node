@@ -85,9 +85,6 @@ class NodePaths
             $setSymlink = false;
         }
 
-        echo self::$nodeExecutable;
-        die();
-
         if ($setSymlink && !file_exists(self::$nodeExecutable)) {
             $createSymLink = 'ln -s ' . $nodeExecutableSystemSpecific . ' node';
             $process = new Process($createSymLink, self::$nodeExecutableDirectory);
